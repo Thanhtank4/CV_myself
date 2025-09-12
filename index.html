@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Tân - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .hover-scale {
+            transition: transform 0.2s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.1);
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #007bff, #6c757d);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1rem;
+            width: 12px;
+            height: 12px;
+            background: #007bff;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px #007bff;
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+        }
+        
+        .project-image {
+            transition: transform 0.3s ease;
+        }
+        
+        .project-overlay {
+            background: rgba(0,0,0,0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .filter-white {
+            filter: brightness(0) invert(1);
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+        }
+
+        .navbar.scrolled {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar.scrolled .navbar-brand,
+        .navbar.scrolled .nav-link {
+            color: #333 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-white" href="#home">Portfolio</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link px-3 fw-medium text-white" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 fw-medium text-white" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 fw-medium text-white" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 fw-medium text-white" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link px-3 fw-medium text-white" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-vh-100 d-flex align-items-center position-relative overflow-hidden">
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: -2"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Ccircle cx=\'6\' cy=\'6\' r=\'6\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E'); z-index: -1"></div>
+        <div class="container text-center text-white">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="animate-fade-in-up">
+                        <img src="./image/my.jpg" alt="Profile" class="rounded-circle mb-4 border border-4 border-white shadow-lg" style="width: 150px; height: 150px; object-fit: cover;">
+                        <h1 class="display-4 fw-bold mb-3">Thanh Tân</h1>
+                        <p class="lead mb-4 opacity-90">Full Stack Developer & UI/UX Designer</p>
+                        <p class="fs-5 mb-5 opacity-80">Passionate about creating beautiful, functional web applications that solve real-world problems</p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="#projects" class="btn btn-light btn-lg px-4 py-2 fw-semibold">View My Work</a>
+                            <button class="btn btn-outline-light btn-lg px-4 py-2 fw-semibold">
+                                📄 Download CV
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <a href="#" class="text-white fs-4 hover-scale">📱</a>
+                            <a href="#" class="text-white fs-4 hover-scale">💼</a>
+                            <a href="#" class="text-white fs-4 hover-scale">📧</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3 text-dark">About Me</h2>
+                    <p class="lead text-muted">Get to know more about my background, skills, and what drives me</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <div class="card border-0 shadow-lg h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="text-primary me-3">👤</span>
+                                <h4 class="mb-0">My Story</h4>
+                            </div>
+                            <p class="text-muted mb-4">With over 5 years of experience in web development, I specialize in creating modern, responsive applications using cutting-edge technologies. My journey started with a Computer Science degree and has evolved through various projects and challenges.</p>
+                            <p class="text-muted">I'm passionate about clean code, user experience, and continuous learning. When I'm not coding, you can find me exploring new technologies or contributing to open-source projects.</p>
+                            <div class="d-flex align-items-center text-muted mt-3">
+                                <span class="me-2">📍</span>
+                                <small>San Francisco, CA</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="text-primary me-3">💻</span>
+                                <h4 class="mb-0">Technical Skills</h4>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6 class="fw-semibold mb-2">Frontend Development</h6>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">React</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">Vue.js</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">TypeScript</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">Tailwind CSS</span>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">Bootstrap</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6 class="fw-semibold mb-2">Backend Development</h6>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-success-subtle text-success px-3 py-2">Node.js</span>
+                                    <span class="badge bg-success-subtle text-success px-3 py-2">Python</span>
+                                    <span class="badge bg-success-subtle text-success px-3 py-2">PostgreSQL</span>
+                                    <span class="badge bg-success-subtle text-success px-3 py-2">MongoDB</span>
+                                    <span class="badge bg-success-subtle text-success px-3 py-2">AWS</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h6 class="fw-semibold mb-2">Tools & Design</h6>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-warning-subtle text-warning px-3 py-2">Figma</span>
+                                    <span class="badge bg-warning-subtle text-warning px-3 py-2">Git</span>
+                                    <span class="badge bg-warning-subtle text-warning px-3 py-2">Docker</span>
+                                    <span class="badge bg-warning-subtle text-warning px-3 py-2">Adobe XD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3 text-dark">Experience</h2>
+                    <p class="lead text-muted">My professional journey and key achievements</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <div>
+                                            <h5 class="fw-bold text-primary mb-1">Senior Full Stack Developer</h5>
+                                            <h6 class="text-muted mb-2">Tech Innovations Inc.</h6>
+                                        </div>
+                                        <div class="d-flex align-items-center text-muted">
+                                            <span class="me-2">📅</span>
+                                            <small class="fw-medium">2022 - Present</small>
+                                        </div>
+                                    </div>
+                                    <p class="text-muted mb-3">Led development of scalable web applications serving 100k+ users. Implemented microservices architecture and improved application performance by 40%.</p>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 Built React-based dashboard</span>
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 Optimized database queries</span>
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 Mentored junior developers</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <div>
+                                            <h5 class="fw-bold text-primary mb-1">Frontend Developer</h5>
+                                            <h6 class="text-muted mb-2">Digital Solutions LLC</h6>
+                                        </div>
+                                        <div class="d-flex align-items-center text-muted">
+                                            <span class="me-2">📅</span>
+                                            <small class="fw-medium">2020 - 2022</small>
+                                        </div>
+                                    </div>
+                                    <p class="text-muted mb-3">Developed responsive web applications using React and Vue.js. Collaborated with UX team to implement pixel-perfect designs.</p>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 Reduced bundle size by 30%</span>
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 Implemented PWA features</span>
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 A/B tested new features</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <div>
+                                            <h5 class="fw-bold text-primary mb-1">Junior Web Developer</h5>
+                                            <h6 class="text-muted mb-2">StartUp Studios</h6>
+                                        </div>
+                                        <div class="d-flex align-items-center text-muted">
+                                            <span class="me-2">📅</span>
+                                            <small class="fw-medium">2019 - 2020</small>
+                                        </div>
+                                    </div>
+                                    <p class="text-muted mb-3">Built and maintained company websites and web applications. Gained experience in full-stack development and agile methodologies.</p>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 Developed 5+ client websites</span>
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 Learned modern frameworks</span>
+                                        <span class="badge bg-light text-dark px-3 py-2">🏆 Participated in code reviews</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3 text-dark">Featured Projects</h2>
+                    <p class="lead text-muted">A showcase of my recent work and side projects</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100 project-card">
+                        <div class="card-img-top position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop&auto=format" alt="E-Commerce Platform" class="w-100 project-image" style="height: 250px; object-fit: cover;">
+                            <div class="project-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="btn btn-light btn-sm">🔗 Live Demo</a>
+                                    <a href="#" class="btn btn-dark btn-sm">📱 Code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">E-Commerce Platform</h5>
+                            <p class="text-muted mb-3">A full-featured online store with payment integration, inventory management, and admin dashboard.</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">React</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">Node.js</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">MongoDB</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">Stripe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100 project-card">
+                        <div class="card-img-top position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop&auto=format" alt="Task Management App" class="w-100 project-image" style="height: 250px; object-fit: cover;">
+                            <div class="project-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="btn btn-light btn-sm">🔗 Live Demo</a>
+                                    <a href="#" class="btn btn-dark btn-sm">📱 Code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">Task Management App</h5>
+                            <p class="text-muted mb-3">A collaborative project management tool with real-time updates and team collaboration features.</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">Vue.js</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">Firebase</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">Vuetify</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">PWA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100 project-card">
+                        <div class="card-img-top position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=250&fit=crop&auto=format" alt="Weather Dashboard" class="w-100 project-image" style="height: 250px; object-fit: cover;">
+                            <div class="project-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="btn btn-light btn-sm">🔗 Live Demo</a>
+                                    <a href="#" class="btn btn-dark btn-sm">📱 Code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">Weather Dashboard</h5>
+                            <p class="text-muted mb-3">A responsive weather application with location-based forecasts and interactive charts.</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">React</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">Chart.js</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">OpenWeather API</span>
+                                <span class="badge bg-primary-subtle text-primary px-2 py-1">CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3 text-dark">Get In Touch</h2>
+                    <p class="lead text-muted">Let's discuss your next project or just say hello!</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="text-center p-4">
+                                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="text-primary fs-4">📞</span>
+                                </div>
+                                <h5 class="fw-semibold mb-2">Phone</h5>
+                                <p class="text-muted mb-0">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center p-4">
+                                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="text-primary fs-4">📧</span>
+                                </div>
+                                <h5 class="fw-semibold mb-2">Email</h5>
+                                <p class="text-muted mb-0">john@example.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center p-4">
+                                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                    <span class="text-primary fs-4">📍</span>
+                                </div>
+                                <h5 class="fw-semibold mb-2">Location</h5>
+                                <p class="text-muted mb-0">San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 shadow-lg mt-5">
+                        <div class="card-body p-5">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Name</label>
+                                    <input type="text" class="form-control form-control-lg border-0 bg-light" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Email</label>
+                                    <input type="email" class="form-control form-control-lg border-0 bg-light" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Message</label>
+                                    <textarea class="form-control form-control-lg border-0 bg-light" rows="5" required></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="button" class="btn btn-primary btn-lg px-5 py-3 fw-semibold" onclick="sendMessage()">
+                                        📨 Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Thanh Tân. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex justify-content-md-end justify-content-center gap-3 mt-3 mt-md-0">
+                        <a href="#" class="text-white">📱</a>
+                        <a href="#" class="text-white">💼</a>
+                        <a href="#" class="text-white">📧</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+     // Contact form
+function sendMessage() {
+    const form = document.querySelector('#contact .card-body');
+    const inputs = form.querySelectorAll('input, textarea');
+    let isValid = true;
+
+    // Simple validation
+    inputs.forEach(input => {
+        if (input.hasAttribute('required') && !input.value.trim()) {
+            input.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            input.classList.remove('is-invalid');
+        }
+    });
+
+    if (isValid) {
+        alert('Thank you for your message! I\'ll get back to you soon.');
+        document.querySelectorAll('#contact input, #contact textarea').forEach(field => {
+            field.value = '';
+            field.classList.remove('is-invalid');
+        });
+    } else {
+        alert('Please fill in all required fields.');
+    }
+}
